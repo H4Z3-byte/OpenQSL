@@ -35,5 +35,5 @@ Un ringraziamento speciale a **Mediaglobe** per il supporto allo sviluppo e alla
 
 1. **Clona il repository:**
    ```bash
-   git clone [https://github.com/TUO-UTENTE/OpenQSL.git](https://github.com/TUO-UTENTE/OpenQSL.git)
+   git clone [https://github.com/TUO-UTENTE/OpenQSL.git](https://github.com/H4Z3-byte/OpenQSL.git)
    cd OpenQSL
