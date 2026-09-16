@@ -55,13 +55,6 @@
             text-decoration: underline;
         }
 
-        hr {
-            border: 0;
-            height: 1px;
-            background: #30363d;
-            margin: 20px 0;
-        }
-
         .alert-box {
             background-color: #161b22;
             border-left: 5px solid #d29922;
@@ -132,7 +125,7 @@
 
         .download-count {
             margin-top: 12px;
-            font-size: 0.9em;
+            font-size: 0.95em;
             color: #8b949e;
         }
 
@@ -186,9 +179,9 @@
             ✅ Download avviato! Se il file non si scarica, controlla i popup del browser.
         </p>
 
-        <!-- Contatore di download -->
+        <!-- Contatore di download globale -->
         <p class="download-count">
-            Download effettuati da questo dispositivo: <strong id="countDisplay" style="color: #c9d1d9;">0</strong>
+            Download totali nel mondo: <strong id="countDisplay" style="color: #58a6ff;">Caricamento...</strong>
         </p>
     </div>
 
@@ -196,27 +189,46 @@
         <p>© OpenQSL - Realizzato da RB0P</p>
     </footer>
 
-    <!-- Script Gestione Download -->
+    <!-- Script Contatore Globale -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const downloadBtn = document.getElementById("downloadBtn");
             const feedback = document.getElementById("downloadFeedback");
             const countDisplay = document.getElementById("countDisplay");
 
-            // Recupera il contatore locale salvato
-            let downloads = parseInt(localStorage.getItem("openqsl_downloads") || "0", 10);
-            countDisplay.textContent = downloads;
+            // Identificativo unico per il contatore su CountAPI
+            const namespace = "openqsl-rb0p-download";
+            const key = "exe_downloads";
 
+            // 1. Carica il conteggio globale attuale all'apertura della pagina
+            fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.value !== undefined) {
+                        countDisplay.textContent = data.value;
+                    } else {
+                        // Se la chiave non esiste ancora, la inizializza
+                        fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&value=0`)
+                            .then(() => countDisplay.textContent = "0");
+                    }
+                })
+                .catch(() => {
+                    countDisplay.textContent = "N/D";
+                });
+
+            // 2. Incrementa il conteggio globale al click del tasto download
             downloadBtn.addEventListener("click", function () {
-                // Mostra il messaggio di conferma
                 feedback.style.display = "block";
 
-                // Incrementa e salva il contatore locale
-                downloads++;
-                localStorage.setItem("openqsl_downloads", downloads);
-                countDisplay.textContent = downloads;
+                fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.value !== undefined) {
+                            countDisplay.textContent = data.value;
+                        }
+                    })
+                    .catch(err => console.error("Errore aggiornamento contatore:", err));
 
-                // Effetto visivo di click
                 downloadBtn.style.opacity = "0.7";
                 setTimeout(() => {
                     downloadBtn.style.opacity = "1";
