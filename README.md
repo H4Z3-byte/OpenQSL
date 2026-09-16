@@ -30,10 +30,3 @@ Un ringraziamento speciale a **Mediaglobe** per il supporto allo sviluppo e alla
 * **Eseguibile Standalone:** Compilabile in un unico file `.exe` per Windows tramite PyInstaller.
 
 ---
-
-## 🛠️ Installazione e Avvio (Da Codice Sorgente)
-
-1. **Clona il repository:**
-   ```bash
-   git clone [https://github.com/TUO-UTENTE/OpenQSL.git](https://github.com/H4Z3-byte/OpenQSL.git)
-   cd OpenQSL
