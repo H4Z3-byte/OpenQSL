@@ -181,7 +181,7 @@
 
         <!-- Contatore di download globale -->
         <p class="download-count">
-            Download totali nel mondo: <strong id="countDisplay" style="color: #58a6ff;">Caricamento...</strong>
+            Download totali nel mondo: <strong id="countDisplay" style="color: #58a6ff;">0</strong>
         </p>
     </div>
 
@@ -189,45 +189,40 @@
         <p>© OpenQSL - Realizzato da RB0P</p>
     </footer>
 
-    <!-- Script Contatore Globale -->
+    <!-- Script Contatore Globale (CounterAPI.dev) -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const downloadBtn = document.getElementById("downloadBtn");
             const feedback = document.getElementById("downloadFeedback");
             const countDisplay = document.getElementById("countDisplay");
 
-            // Identificativo unico per il contatore su CountAPI
-            const namespace = "openqsl-rb0p-download";
-            const key = "exe_downloads";
+            const counterUrl = "https://counterapi.com/api/openqsl-rb0p/downloads";
 
-            // 1. Carica il conteggio globale attuale all'apertura della pagina
-            fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+            // 1. Legge il conteggio attuale all'apertura
+            fetch(counterUrl)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.value !== undefined) {
+                    if (data && data.value !== undefined) {
                         countDisplay.textContent = data.value;
-                    } else {
-                        // Se la chiave non esiste ancora, la inizializza
-                        fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&value=0`)
-                            .then(() => countDisplay.textContent = "0");
                     }
                 })
                 .catch(() => {
-                    countDisplay.textContent = "N/D";
+                    // Fallback se la rete blocca l'API
+                    countDisplay.textContent = "1+";
                 });
 
-            // 2. Incrementa il conteggio globale al click del tasto download
+            // 2. Incrementa il conteggio al click sul download
             downloadBtn.addEventListener("click", function () {
                 feedback.style.display = "block";
 
-                fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+                fetch(counterUrl + "/up")
                     .then(res => res.json())
                     .then(data => {
-                        if (data.value !== undefined) {
+                        if (data && data.value !== undefined) {
                             countDisplay.textContent = data.value;
                         }
                     })
-                    .catch(err => console.error("Errore aggiornamento contatore:", err));
+                    .catch(err => console.error("Errore contatore:", err));
 
                 downloadBtn.style.opacity = "0.7";
                 setTimeout(() => {
