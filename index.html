@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenQSL - Download</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1a2a3a;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+
+        .meta {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+
+        .meta a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .meta a:hover {
+            text-decoration: underline;
+        }
+
+        .alert-box {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .alert-box h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+
+        .features {
+            background-color: #fff;
+            padding: 15px 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .download-container {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background-color: #28a745;
+            color: #ffffff;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📡 OpenQSL</h1>
+
+    <div class="meta">
+        <p><strong>Sviluppato da:</strong> RB0P</p>
+        <p><strong>Sponsor ufficiale:</strong> 🌐 <a href="https://www.mediaglobe.it/" target="_blank" rel="noopener">Mediaglobe</a></p>
+    </div>
+
+    <hr>
+
+    <div class="alert-box">
+        <h3>⚠️ Nota importante sui messaggi nel Terminale / Prompt dei Comandi</h3>
+        <p>Durante l'uso o la fase di download, potresti notare alcuni messaggi di errore come <code>FAILED</code> o brevi disconnessioni nel terminale.</p>
+        <p><strong>Non preoccuparti, è un comportamento del tutto normale e previsto:</strong> L'applicazione integra un sistema automatico di <em>retry</em> (riprova). In caso di errore temporaneo di rete o risposta lenta dai server, il programma continuerà a ritentare il download in background finché tutti i dati non saranno stati scaricati con successo.</p>
+    </div>
+
+    <h2>🤝 Sponsor</h2>
+    <p>Un ringraziamento speciale a <strong>Mediaglobe</strong> per il supporto allo sviluppo e alla distribuzione di questo progetto.</p>
+
+    <h2>🚀 Caratteristiche</h2>
+    <div class="features">
+        <ul>
+            <li><strong>Automatizzato:</strong> Gestisce in autonomia i tentativi di connessione e il recupero dei dati in modo resiliente.</li>
+            <li><strong>Interfaccia Grafica:</strong> Semplice e intuitiva per facilitare l'uso a tutti i radioamatori.</li>
+            <li><strong>Eseguibile Standalone:</strong> Non richiede l'installazione di Python per funzionare.</li>
+        </ul>
+    </div>
+
+    <!-- Sezione Download -->
+    <div class="download-container">
+        <p>Clicca sul pulsante sottostante per scaricare l'eseguibile per Windows:</p>
+        <a href="OpenQSL.exe" class="btn-download" download>💾 Scarica OpenQSL.exe</a>
+    </div>
+
+    <footer>
+        <p>© OpenQSL - Realizzato da RB0P</p>
+    </footer>
+
+</body>
+</html>
