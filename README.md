@@ -4,6 +4,7 @@ Un'applicazione Python per la gestione e il download automatizzato delle **sched
 
 **Sviluppato da:** **RB0P**  
 **Sponsor ufficiale:** 🌐 **Mediaglobe**
+**LINK https://www.mediaglobe.it/**
 
 ---
 
