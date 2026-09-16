@@ -6,36 +6,47 @@
     <title>OpenQSL - Download</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #0d1117;
+            color: #c9d1d9;
             max-width: 800px;
             margin: 30px auto;
-            padding: 20px;
-            border: 1px solid #ccc;
+            padding: 25px;
+            border: 1px solid #30363d;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
 
         h1 {
-            color: #1a2a3a;
-            border-bottom: 2px solid #0056b3;
+            color: #58a6ff;
+            border-bottom: 2px solid #21262d;
             padding-bottom: 10px;
+            margin-top: 0;
         }
 
         h2 {
-            color: #1a2a3a;
+            color: #58a6ff;
             margin-top: 25px;
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 5px;
         }
 
         .meta {
             margin-bottom: 20px;
             font-size: 1.05em;
+            background-color: #161b22;
+            padding: 12px 20px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+
+        .meta p {
+            margin: 5px 0;
         }
 
         .meta a {
-            color: #0056b3;
+            color: #58a6ff;
             text-decoration: none;
             font-weight: bold;
         }
@@ -44,68 +55,94 @@
             text-decoration: underline;
         }
 
+        hr {
+            border: 0;
+            height: 1px;
+            background: #30363d;
+            margin: 20px 0;
+        }
+
         .alert-box {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 15px;
+            background-color: #161b22;
+            border-left: 5px solid #d29922;
+            padding: 15px 20px;
             margin: 20px 0;
             border-radius: 4px;
+            border-top: 1px solid #30363d;
+            border-right: 1px solid #30363d;
+            border-bottom: 1px solid #30363d;
         }
 
         .alert-box h3 {
             margin-top: 0;
-            color: #856404;
+            color: #f0883e;
+        }
+
+        code {
+            background-color: #21262d;
+            color: #ff7b72;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
         }
 
         .features {
-            background-color: #fff;
+            background-color: #161b22;
             padding: 15px 25px;
-            border: 1px solid #e0e0e0;
-            border-radius: 5px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
             margin: 20px 0;
+        }
+
+        .features li {
+            margin-bottom: 8px;
         }
 
         .download-container {
             text-align: center;
             margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
+            padding-top: 25px;
+            border-top: 1px solid #30363d;
         }
 
         .btn-download {
             display: inline-block;
-            background-color: #28a745;
+            background-color: #238636;
             color: #ffffff;
             font-size: 1.2em;
             font-weight: bold;
-            padding: 15px 30px;
+            padding: 15px 32px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 6px;
+            border: 1px solid rgba(240,246,252,0.1);
             transition: background-color 0.2s ease, opacity 0.2s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
         }
 
         .btn-download:hover {
-            background-color: #218838;
+            background-color: #2ea043;
         }
 
         .feedback-msg {
             display: none;
-            color: #28a745;
+            color: #3fb950;
             margin-top: 15px;
             font-weight: bold;
         }
 
         .download-count {
-            margin-top: 10px;
+            margin-top: 12px;
             font-size: 0.9em;
-            color: #666;
+            color: #8b949e;
         }
 
         footer {
-            margin-top: 30px;
+            margin-top: 35px;
             text-align: center;
-            font-size: 0.9em;
-            color: #666;
+            font-size: 0.85em;
+            color: #8b949e;
+            border-top: 1px solid #21262d;
+            padding-top: 15px;
         }
     </style>
 </head>
@@ -114,11 +151,9 @@
     <h1>📡 OpenQSL</h1>
 
     <div class="meta">
-        <p><strong>Sviluppato da:</strong> RB0P</p>
+        <p><strong>Sviluppato da:</strong> <span style="color: #58a6ff;">RB0P</span></p>
         <p><strong>Sponsor ufficiale:</strong> 🌐 <a href="https://www.mediaglobe.it/" target="_blank" rel="noopener">Mediaglobe</a></p>
     </div>
-
-    <hr>
 
     <div class="alert-box">
         <h3>⚠️ Nota importante sui messaggi nel Terminale / Prompt dei Comandi</h3>
@@ -153,7 +188,7 @@
 
         <!-- Contatore di download -->
         <p class="download-count">
-            Download effettuati da questo dispositivo: <strong id="countDisplay">0</strong>
+            Download effettuati da questo dispositivo: <strong id="countDisplay" style="color: #c9d1d9;">0</strong>
         </p>
     </div>
 
