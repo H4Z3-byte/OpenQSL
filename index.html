@@ -18,18 +18,17 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
 
-        h1 {
-            color: #58a6ff;
-            border-bottom: 2px solid #21262d;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        h2 {
+        h1, h2 {
             color: #58a6ff;
             margin-top: 25px;
             border-bottom: 1px solid #21262d;
             padding-bottom: 5px;
+        }
+
+        h1 {
+            border-bottom: 2px solid #21262d;
+            padding-bottom: 10px;
+            margin-top: 0;
         }
 
         .meta {
@@ -41,18 +40,16 @@
             border: 1px solid #30363d;
         }
 
-        .meta p {
-            margin: 5px 0;
-        }
+        .meta p { margin: 5px 0; }
+        .meta a { color: #58a6ff; text-decoration: none; font-weight: bold; }
+        .meta a:hover { text-decoration: underline; }
 
-        .meta a {
-            color: #58a6ff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .meta a:hover {
-            text-decoration: underline;
+        .about-box {
+            background-color: #161b22;
+            padding: 18px 20px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            margin-bottom: 20px;
         }
 
         .alert-box {
@@ -61,15 +58,11 @@
             padding: 15px 20px;
             margin: 20px 0;
             border-radius: 4px;
-            border-top: 1px solid #30363d;
-            border-right: 1px solid #30363d;
-            border-bottom: 1px solid #30363d;
+            border: 1px solid #30363d;
+            border-left-width: 5px;
         }
 
-        .alert-box h3 {
-            margin-top: 0;
-            color: #f0883e;
-        }
+        .alert-box h3 { margin-top: 0; color: #f0883e; }
 
         code {
             background-color: #21262d;
@@ -85,10 +78,6 @@
             border: 1px solid #30363d;
             border-radius: 6px;
             margin: 20px 0;
-        }
-
-        .features li {
-            margin-bottom: 8px;
         }
 
         .download-container {
@@ -112,9 +101,7 @@
             box-shadow: 0 3px 6px rgba(0,0,0,0.3);
         }
 
-        .btn-download:hover {
-            background-color: #2ea043;
-        }
+        .btn-download:hover { background-color: #2ea043; }
 
         .feedback-msg {
             display: none;
@@ -127,6 +114,48 @@
             margin-top: 12px;
             font-size: 0.95em;
             color: #8b949e;
+        }
+
+        /* Sezione Segnalazione Problemi */
+        .report-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #30363d;
+        }
+
+        .report-textarea {
+            width: 100%;
+            height: 100px;
+            background-color: #161b22;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 12px;
+            box-sizing: border-box;
+            resize: vertical;
+            font-family: inherit;
+            margin-bottom: 12px;
+        }
+
+        .report-textarea:focus {
+            outline: none;
+            border-color: #58a6ff;
+        }
+
+        .btn-report {
+            background-color: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-report:hover {
+            background-color: #30363d;
+            color: #58a6ff;
         }
 
         footer {
@@ -146,6 +175,12 @@
     <div class="meta">
         <p><strong>Sviluppato da:</strong> <span style="color: #58a6ff;">RB0P</span></p>
         <p><strong>Sponsor ufficiale:</strong> 🌐 <a href="https://www.mediaglobe.it/" target="_blank" rel="noopener">Mediaglobe</a></p>
+    </div>
+
+    <!-- Spiegazione iniziale dell'applicazione -->
+    <div class="about-box">
+        <p><strong>A cosa serve OpenQSL?</strong><br>
+        OpenQSL è un'utility automatizzata progettata per i radioamatori. Permette di scaricare in blocco (batch download) tutte le proprie schede <strong>eQSL</strong> dal servizio eQSL.cc in modo rapido, organizzato e totalmente automatico, senza dover salvare manualmente ogni singola immagine.</p>
     </div>
 
     <div class="alert-box">
@@ -174,60 +209,103 @@
             💾 Scarica OpenQSL.exe
         </a>
 
-        <!-- Feedback visivo -->
         <p id="downloadFeedback" class="feedback-msg">
             ✅ Download avviato! Se il file non si scarica, controlla i popup del browser.
         </p>
 
-        <!-- Contatore di download globale -->
         <p class="download-count">
             Download totali nel mondo: <strong id="countDisplay" style="color: #58a6ff;">0</strong>
         </p>
+    </div>
+
+    <!-- Sezione Segnalazione Problemi -->
+    <div class="report-section">
+        <h2>🛠️ Segnala un Problema</h2>
+        <p>Hai riscontrato un bug o hai un suggerimento? Descrivilo qui sotto (minimo 5 parole):</p>
+        
+        <form id="problemForm" action="https://formspree.io/f/mqpakgek" method="POST">
+            <textarea 
+                name="messaggio" 
+                id="problemText" 
+                class="report-textarea" 
+                placeholder="Descrivi il problema riscontrato con almeno 5 parole..." 
+                required></textarea>
+            <br>
+            <button type="submit" id="submitProblemBtn" class="btn-report">✉️ Invia Segnalazione</button>
+        </form>
+
+        <p id="reportFeedback" style="display:none; margin-top:10px; font-weight:bold;"></p>
     </div>
 
     <footer>
         <p>© OpenQSL - Realizzato da RB0P</p>
     </footer>
 
-    <!-- Script Contatore Globale (CounterAPI.dev) -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // 1. Gestione Contatore Download
             const downloadBtn = document.getElementById("downloadBtn");
             const feedback = document.getElementById("downloadFeedback");
             const countDisplay = document.getElementById("countDisplay");
-
             const counterUrl = "https://counterapi.com/api/openqsl-rb0p/downloads";
 
-            // 1. Legge il conteggio attuale all'apertura
             fetch(counterUrl)
                 .then(res => res.json())
-                .then(data => {
-                    if (data && data.value !== undefined) {
-                        countDisplay.textContent = data.value;
-                    }
-                })
-                .catch(() => {
-                    // Fallback se la rete blocca l'API
-                    countDisplay.textContent = "1+";
-                });
+                .then(data => { if (data && data.value !== undefined) countDisplay.textContent = data.value; })
+                .catch(() => { countDisplay.textContent = "1+"; });
 
-            // 2. Incrementa il conteggio al click sul download
             downloadBtn.addEventListener("click", function () {
                 feedback.style.display = "block";
-
                 fetch(counterUrl + "/up")
                     .then(res => res.json())
-                    .then(data => {
-                        if (data && data.value !== undefined) {
-                            countDisplay.textContent = data.value;
-                        }
-                    })
-                    .catch(err => console.error("Errore contatore:", err));
+                    .then(data => { if (data && data.value !== undefined) countDisplay.textContent = data.value; });
+            });
 
-                downloadBtn.style.opacity = "0.7";
-                setTimeout(() => {
-                    downloadBtn.style.opacity = "1";
-                }, 1000);
+            // 2. Gestione Invio Trasparente con controllo minimo 5 parole
+            const form = document.getElementById("problemForm");
+            const problemText = document.getElementById("problemText");
+            const reportFeedback = document.getElementById("reportFeedback");
+
+            form.addEventListener("submit", async function(event) {
+                event.preventDefault();
+                
+                const text = problemText.value.trim();
+                // Conteggio parole dividendo per spazi vuoti
+                const wordCount = text ? text.split(/\s+/).length : 0;
+
+                if (wordCount < 5) {
+                    reportFeedback.style.color = "#f0883e";
+                    reportFeedback.textContent = `⚠️ La segnalazione è troppo breve. Hai scritto ${wordCount} parole, ne servono almeno 5.`;
+                    reportFeedback.style.display = "block";
+                    return;
+                }
+
+                const data = new FormData(event.target);
+                
+                try {
+                    const response = await fetch(event.target.action, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        reportFeedback.style.color = "#3fb950";
+                        reportFeedback.textContent = "✅ Segnalazione inviata con successo! Grazie per il supporto.";
+                        reportFeedback.style.display = "block";
+                        form.reset();
+                    } else {
+                        reportFeedback.style.color = "#f0883e";
+                        reportFeedback.textContent = "⚠️ Si è verificato un errore durante l'invio. Riprova più tardi.";
+                        reportFeedback.style.display = "block";
+                    }
+                } catch (error) {
+                    reportFeedback.style.color = "#f0883e";
+                    reportFeedback.textContent = "⚠️ Errore di connessione. Controlla la tua rete.";
+                    reportFeedback.style.display = "block";
+                }
             });
         });
     </script>
